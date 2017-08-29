@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    //v1 
+    // const component = React.createElement(
+    //   "div",
+    //   null,
+    //   React.createElement(
+    //     "span",
+    //     null,
+    //     "142"
+    //   )
+    // );
+    // v2
+    // function component() {
+    //   return (
+    //     <div>
+    //       <span>
+    //         142
+    //       </span>
+    //     </div>
+    //   );
+    // }
+    //v3
+    // function Component(){
+    //   return (
+    //     <div>
+    //       <span>
+    //         142
+    //       </span>
+    //     </div>
+    //   );
+    // }
+    //v4
+    // function Readout(props){
+    //   return (
+    //     <div>
+    //       <span>
+    //         {props.temperature}{props.unit}
+    //       </span>
+    //     </div>
+    //   );
+    // }
+    //v5
+    // const Readout = (props) => {
+    //   return (
+    //     <div>
+    //       <span>
+    //         {props.temperature}{props.unit.toUpperCase()}
+    //       </span>
+    //     </div>
+    //   );
+    // }
+    //v6
+    // const Readout = (props) => (
+    // const formatUnits = units => units.toUpperCase();
+    // const Readout = props => (
+    //     <div>
+    //       <span>
+    //         {props.temperature}{formatUnits(prop.units)} 
+    //       </span>
+    //     </div>
+    // );
+    const formatUnits = units => units.toUpperCase();
+    // object destructuring 
+    const Readout = ({temperature, unit}) => (
+        <div>
+          <span>
+            {temperature}{formatUnits(unit)} 
+          </span>
+        </div>
+    );
+    let currentTemp = 50;
+    setInterval(() => {
+      ReactDOM.render(
+      <Readout temperature={currentTemp} unit="f"/>,
+      document.getElementById('root')
+    );
+    currentTemp = currentTemp + 5;
+
+    }, 2000);
+    // ReactDOM.render(
+    //   //v1
+    //   // component
+    //   //v2
+    //   // component(),
+    //   //v3
+    //   // <Component />,
+    //   //v4
+    //   <Readout temperature="178" unit="f"/>,
+    //   document.getElementById('root')
+    // );
+  </script>
+</body>
+</html>
