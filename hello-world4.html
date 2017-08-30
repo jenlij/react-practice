@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css">
+  <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const formatUnits = units => units.toUpperCase();
+
+    const Readout = ({temperature, unit}) => (
+      <div>
+        <span>
+          { temperature } { formatUnits(unit) }
+        </span>
+      </div>
+    );
+
+    const maximum = 1500;
+    const minimum = 2;
+    const incRand = (num) => num + (Math.floor(Math.random() * (maximum - minimum + 1)) + minimum);
+
+    let currentTemps = [50, 50, 50, 50, 50];
+
+    // Use `className` and NOT `class` inside of JSX
+    ReactDOM.render(
+      (<div className="container" >
+        <Readout temperature={currentTemps[0]} unit="f" />
+        <Readout temperature={currentTemps[1]} unit="f" />
+        {/* comments are super goofy in JSX */}
+        {/* <Readout temperature={currentTemps[1]} unit="f" />*/}
+        <Readout temperature={currentTemps[2]} unit="f" />
+        <Readout temperature={currentTemps[3]} unit="f" />
+        <Readout temperature={currentTemps[4]} unit="f" />
+      </div>),
+      document.getElementById('root')
+    );
+    setInterval(() => {
+      currentTemps = currentTemps.map(incRand);
+      // Collections MUST include a `key` prop
+      let readouts = currentTemps.map((temp, id) => <Readout temperature={temp} unit="f" key={temp} />)
+      readouts.push(<Readout temperature={0} unit="f" />)
+      readouts.push(<Readout temperature={142} unit="f" />)
+      ReactDOM.render(
+        (<div>
+          {readouts}
+        </div>),
+        document.getElementById('root')
+      );
+    }, 200);
+  </script>
+</body>
+</html>

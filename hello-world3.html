@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    // # version 1
+    // const component = React.createElement(
+    //   "div",
+    //   null,
+    //   React.createElement(
+    //     "span",
+    //     null,
+    //     "142"
+    //   )
+    // );
+    // # version 2
+    // function component() {
+    //   return (
+    //     <div>
+    //       <span>
+    //         142
+    //       </span>
+    //     </div>
+    //   );
+    // }
+
+    // Version #3
+    // function Component() {
+    //   return (
+    //     <div>
+    //       <span>
+    //         142
+    //       </span>
+    //     </div>
+    //   );
+    // }
+    // Version #4
+    // function Readout(props) {
+    //   return (
+    //     <div>
+    //       <span>
+    //         { props.temperature } { props.unit }
+    //       </span>
+    //     </div>
+    //   );
+    // }
+
+    // Version #5
+    // function Readout(props) {
+    //   return (
+    //     <div>
+    //       <span>
+    //         { props.temperature } { props.unit }
+    //       </span>
+    //     </div>
+    //   );
+    // }
+
+    // Version #6
+    // const Readout = (props) => {
+    //   return (
+    //     <div>
+    //       <span>
+    //         { props.temperature } { props.unit }
+    //       </span>
+    //     </div>
+    //   );
+    // }
+
+    // Vesion #7 -- this is harder to debug, because i can't put in a console.log
+    // If I did, I would change back to version #6
+    // const Readout = (props) => (
+    // const Readout = props => (
+    //   <div>
+    //     <span>
+    //       { props.temperature } { props.unit }
+    //     </span>
+    //   </div>
+    // );
+
+    // Version #8
+    // const Readout = props => (
+    //   <div>
+    //     <span>
+    //       { props.temperature } { props.unit.toUpperCase() }
+    //     </span>
+    //   </div>
+    // );
+
+    // Version #9
+    // const formatUnits = units => units.toUpperCase();
+
+    // const Readout = props => (
+    //   <div>
+    //     <span>
+    //       { props.temperature } { formatUnits(props.unit) }
+    //     </span>
+    //   </div>
+    // );
+
+    // Version #10
+    const formatUnits = units => units.toUpperCase();
+
+    const Readout = ({temperature, unit}) => (
+      <div>
+        <span>
+          { temperature } { formatUnits(unit) }
+        </span>
+      </div>
+    );
+
+    const maximum = 1500;
+    const minimum = 2;
+    const incRand = (num) => num + (Math.floor(Math.random() * (maximum - minimum + 1)) + minimum);
+
+    // ReactDOM.render(
+    //   <Readout temperature="178" unit="f" />,
+    //   document.getElementById('root')
+    // );
+
+    // Version #11
+    // let currentTemps = [50, 50, 50, 50, 50];
+
+    // setInterval(() => {
+
+    //   ReactDOM.render(
+    //     (<div>
+    //       <Readout temperature={currentTemps[0]} unit="f" />
+    //       <Readout temperature={currentTemps[1]} unit="f" />
+    //       <Readout temperature={currentTemps[2]} unit="f" />
+    //       <Readout temperature={currentTemps[3]} unit="f" />
+    //       <Readout temperature={currentTemps[4]} unit="f" />
+    //     </div>),
+    //     document.getElementById('root')
+    //   );
+    //   currentTemps = currentTemps.map(incRand);
+    // }, 2000);
+
+    let currentTemps = [50, 50, 50, 50, 50];
+    ReactDOM.render(
+      (<div>
+        <Readout temperature={currentTemps[0]} unit="f" />
+        <Readout temperature={currentTemps[1]} unit="f" />
+        <Readout temperature={currentTemps[2]} unit="f" />
+        <Readout temperature={currentTemps[3]} unit="f" />
+        <Readout temperature={currentTemps[4]} unit="f" />
+      </div>),
+      document.getElementById('root')
+    );
+    setInterval(() => {
+      currentTemps = currentTemps.map(incRand);
+      let readouts = currentTemps.map((temp) => <Readout temperature={temp} unit="f" />)
+
+      ReactDOM.render(
+        (<div>
+          {readouts}
+        </div>),
+        document.getElementById('root')
+      );
+    }, 10);
+  </script>
+</body>
+</html>
