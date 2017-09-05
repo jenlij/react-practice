@@ -15,4 +15,5 @@
 * const navBar = <nav>Nav Bar</nav>;
 
 ### JSX Attributes
-* 
+* my-attribute-name = "my-attribute-value"
+* const title = <h1 id="title">Title</h1>;
