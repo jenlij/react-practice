@@ -1,3 +1,4 @@
+# Part 1
 ## Why React?
 * Fast: complex updates
 * Modular: small, reusable files. easier to maintain
@@ -23,13 +24,6 @@
 
 ### Rendering JSX
 * `ReactDOM.render(<h1>Hello world</h1>, document.getElementById('app'));`
-
-
-
-
-## Advanced React
-### States
-* Stateless components inherit from stateful components
 * `import React from 'react'; import ReactDOM from 'react-dom';`
 ```
 var myList = (
@@ -55,3 +49,53 @@ ReactDOM.render(
 3. The changed objects, and the changed objects only, get updated on the real DOM.
 4. Changes on the real DOM cause the screen to change.
 
+
+### More Syntax
+* `<h1 className="big">Hey</h1>`
+* always need closing tags
+* {} for js code inside JSX elements
+
+### Variable attributes
+```
+const pics = {
+  panda: "http://bit.ly/1Tqltv5",
+  owl: "http://bit.ly/1XGtkM3",
+  owlCat: "http://bit.ly/1Upbczi"
+}; 
+
+const panda = (
+  <img 
+    src={pics.panda} 
+    alt="Lazy Panda" />
+);
+```
+
+### Event Listeners
+```
+function myFunc() {
+  alert('calling myFunc');
+}
+
+<img onClick={myFunc} />
+```
+
+* Note that in HTML, event listener names are written in all lowercase, such as onclick or onmouseover. In JSX, event listener names are written in camelCase, such as onClick or onMouseOver
+
+### Conditionals
+```
+let img;
+
+if (coinToss() === 'heads') {
+  img = (<img src={pics.kitty}/>);
+} else {
+  img = (<img src={pics.doggy} />);
+}
+```
+
+
+
+
+# Part 2
+## Advanced React
+### States
+* Stateless components inherit from stateful components
