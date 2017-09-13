@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import CrewMember from './CrewMember';
 
 class Spaceship extends Component {
     static propTypes = {
         name: PropTypes.string,
-        children: PropTypes.node.isRequired
+        children: PropTypes.node.isRequired,
+        commanderType: PropTypes.element
     };
-    // REQUIRED FOR CLASSES
-    render() {
+    static defaultProps = {
+        commanderType: CrewMember
+    }
+    render() { // REQUIRED FOR CLASSES
         const { name, children } = this.props;
         const creaturesOnBoard = children.map((child, idx) =>{
             if(child.type.name === "CrewMember") {

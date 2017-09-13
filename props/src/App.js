@@ -4,7 +4,7 @@ import './App.css';
 import Spaceship from './Spaceship';
 import CrewMember from './CrewMember';
 import BadAlien from './BadAlien';
-
+import Planet from './Planet';
 class App extends Component {
   render() {
     return (
@@ -13,6 +13,11 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
+        <Planet name="Earth">
+          <CrewMember name="one" rank="Commander"/>
+          <CrewMember name="two" rank="Ensign"/>
+          <BadAlien name="alien" species="Borg" />
+        </Planet>
         <Spaceship name="DS9">
           <CrewMember name="Riker" rank="Commander"/>
           <CrewMember name="Crusher" rank="Ensign"/>
