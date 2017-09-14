@@ -1,4 +1,4 @@
-/*
+/* Tip #1: Make constants for your action type strings
 this is what we want to produce as an action object:
 {
     type: ADD_MEMBER,
