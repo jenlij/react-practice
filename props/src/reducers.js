@@ -7,6 +7,21 @@ export const LOCATIONS = {
     PLANET_SUN: "PLANET_SUN"
 };
 
+const planets = (state=[], action) => {
+    switch (action.type) {
+        case actions.ADD_PLANET:
+            return [
+                ...state,
+                {
+                    id: action.id,
+                    name: action.name
+                }
+            ]
+        default:
+            return state;
+    }
+}
+
 export const ships = (state=[], action) => {
     switch(action.type) {
         case actions.ADD_SHIP:

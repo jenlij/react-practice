@@ -21,5 +21,13 @@ window.TRANSPORTER_ROOM = LOCATIONS.TRANSPORTER_ROOM;
 window.PLANET_EARTH = LOCATIONS.PLANET_EARTH;
 window.PLANET_SUN = LOCATIONS.PLANET_SUN;
 
+
+
+store.dispatch({
+    type: ADD_SHIP,
+    name: 'Discovery',
+    id: 1
+});
+
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();

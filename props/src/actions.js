@@ -13,6 +13,17 @@ this is what we want to produce as an action object:
     id: 12345,
     location: 'LOCATION_SHIP'
 }
+
+{
+    type: ADD_SHIP,
+    name: 'enterprise',
+    id: 54321
+}
+{
+    type: ADD_PLANET,
+    name: 'Earth',
+    id: 9876
+}
 */
 
 const ADD_MEMBER = 'ADD_MEMBER';
