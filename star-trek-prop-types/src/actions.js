@@ -37,6 +37,17 @@ This is what we want to produce as an action object:
 
 */
 
+export function addMember(nameMem, rankMem, idMem, locationMem) {
+  return {
+    type: ADD_MEMBER,
+    name: nameMem,
+    rank: rankMem,
+    id: idMem,
+    location: locationMem
+  }
+}
+
+
 const ADD_MEMBER = 'ADD_MEMBER';
 const BEAM_MEMBER = 'BEAM_MEMBER';
 const ADD_SHIP = 'ADD_SHIP';

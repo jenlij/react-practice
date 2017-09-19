@@ -11,7 +11,7 @@ import actions from './actions';
 import starTrekApp from './reducers';
 
 import { createStore } from 'redux';
-
+import {addMember} from './actions';
 const store = createStore(starTrekApp);
 
 window.store = store;
@@ -102,6 +102,7 @@ const transferCrystals = (store, howMany, fromId, toId) => {
 
 window.transferCrystals = transferCrystals;
 
+store.dispatch(addMember('Joe', 'CFO', 48103, LOCATIONS.PLANET_EARTH)); 
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
