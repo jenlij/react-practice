@@ -21,17 +21,14 @@ class BookList extends Component {
             <ul className="list-group col-sm-4">
                 {this.renderList()}
             </ul>
-        )
+        );
     }
 
 }
 
 //this will rerender automatically when the application state changes
 function mapStateToProps(state) {
-    return ( {
-        books: state.books
-    }
-    );
+    return {books: state.books};
 }
 
 export default connect(mapStateToProps)(BookList); //function + component = container (smart component)

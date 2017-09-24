@@ -4,5 +4,5 @@ export default function() {
         {title: 'Python'},
         {title: 'R'},
         {title: 'C++'}
-    ]
+    ];
 }
