@@ -6,7 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 import {Provicer} from 'react-redux';
 import { createStore, applyMiddleware} from 'redux';
 import ReduxPromise from 'redux-promise';
-import reducers from './reducers';
+// import reducers from './reducers';
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
